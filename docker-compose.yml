@@ -1,0 +1,15 @@
+version: "3"
+services:
+  elasticsearch:
+    environment:
+    - discovery.type=single-node
+    image: elasticsearch:7.17.9
+    ports:
+      - "9200:9200"
+    container_name: elasticsearch
+  web:
+    build: . 
+    ports:
+      - "8000:8080"
+    container_name: customized_youtube_feeds
+    
