@@ -1,4 +1,4 @@
-version: "3"
+version: "2.1"
 services:
   elasticsearch:
     environment:
@@ -7,9 +7,22 @@ services:
     ports:
       - "9200:9200"
     container_name: elasticsearch
+    volumes:
+      - ./esdata:/usr/share/elasticsearch/data
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:9200"]
+        interval: 10s
+        timeout: 10s
+        retries: 5
   web:
     build: . 
     ports:
       - "8000:8080"
     container_name: customized_youtube_feeds
-    
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    links: 
+        - elasticsearch
+volumes:
+  esdata:
