@@ -30,6 +30,8 @@ YT_KEY_WORD=cricket
 
 ES data is save on volume in folder ./esdata
 
+API => http://localhost:8000/yt-feed?title=Jasprit
+
 Attaching a esdata.zip, you can unzip and have already setup es node with documents > 250
 https://drive.google.com/file/d/1aOXf44NNnoqPC64ZTmy8e-JGXTqEFug-/view?usp=share_link
 Request for access
